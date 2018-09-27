@@ -50,7 +50,7 @@ button12.addEventListener('click', function () {
     // })
 
 // However using arrow functions that would not be a problem. Arrow function
-// fix the 'this' to the context where it's been defined
+// fix the 'this' to the context where it's been defined (window)
 
     // button.addEventListener('click', () => {
     //     this.text1.innerHTML += output;  // Adrian has a BMW with 10000
