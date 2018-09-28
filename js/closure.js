@@ -41,7 +41,7 @@ var cars = {
 
         var that = this;
         // When cars.printInformation() this.models point to the models array of cars obj
-        this.models.forEach( (car) => {
+        this.models.forEach( function (car) {
             // that var keep the this context of the cars obj
             var text = that.owner_3 + ' has a ' + car.model_3 + ' with ' + car.km_3 + ' km <br>';
             console.log(text);

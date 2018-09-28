@@ -24,6 +24,38 @@
     <div class="container">
         <div>
             <h2><span class="badge badge-secondary">1 </span> 'this' global scope</h2>
+
+            <div>
+                <pre>
+                    <code>
+                        // Global variables
+                        var model = 'MERCEDES',
+                            owner = 'PEPE',
+                            km = '100';
+
+                        var car = {
+                            model: 'BMW',
+                            owner: 'Adrian',
+                            km: '100000',
+                            printInformation: function () {
+                                var text = this.owner + ' has a ' + this.model + ' with ' + this.km + ' km';
+                                console.log(text);
+                                return text;
+                            }
+                        }
+
+                        function printInformation() {
+                            var text = this.owner + ' has a ' + this.model + ' with ' + this.km + ' km';
+                            console.log(text);
+                            return text;
+                        }
+
+                        var output1 = car.printInformation();
+                        var output12 = printInformation(); 
+                    </code>
+                </pre>
+            </div>
+            
             <div class="row align-items-center pt-3">
                 <div class="col-3">
                     <button type="button" id="example1" class="btn btn-primary">Example 1</button>
@@ -44,6 +76,32 @@
 
         <div class="pt-5">
             <h2><span class="badge badge-secondary">2 </span> 'this' in methods as a callback</h2>
+
+            <div>
+                <pre>
+                    <code>
+                        var car = {
+                            model1: 'BMW',
+                            owner1: 'Adrian',
+                            km1: '100000',
+                        
+                            printInformation:  function () {
+                                var text = this.owner1 + ' has a ' + this.model1 + ' with ' + this.km1 + ' km';
+                                console.log(text);
+                            },
+                        
+                            printInformationArrow: () => {
+                                var text = this.owner1 + ' has a ' + this.model1 + ' with ' + this.km1;
+                                console.log(this.owner1 + ' has a ' + this.model1 + ' with ' + this.km1);
+                            }
+                        }
+                        
+                        //button2.addEventListener('click', car.printInformation) 
+                        button2.addEventListener('click', car.printInformation.bind(car))
+                    </code>
+                </pre>
+            </div>
+
             <div class="row align-items-center pt-3">
                 <div class="col-3">
                     <button type="button" id="example2" class="btn btn-primary">Example 1</button>
@@ -56,6 +114,50 @@
 
         <div class="pt-5">
             <h2><span class="badge badge-secondary">3 </span> 'this' in clossure</h2>
+
+            <div>
+                <pre>
+                    <code>
+                        var cars = {
+                            models:[
+                                {
+                                    model_3: 'BMW',
+                                    km_3: '100000'
+                                },
+                                {
+                                    model_3: 'MERCEDES',
+                                    km_3: '100'
+                                }
+                            ],
+                            owner_3: 'Adrian',
+                            printInformation: function (){
+                                this.models.forEach( function(car) {
+                                    var text = this.owner_3 + ' has a ' + car.model_3 + ' with ' + car.km_3 + ' km';
+                                    console.log(text);
+                                })
+                            },
+                            printInformationArrow: function (){
+                                this.models.forEach( (car) => {
+                                    var text = this.owner_3 + ' has a ' + car.model_3 + ' with ' + car.km_3 + ' km';
+                                    console.log(text);
+                                })
+                            },
+                            printInformationThat: function (){    
+                                var that = this;
+                                this.models.forEach( function(car) {
+                                    var text = that.owner_3 + ' has a ' + car.model_3 + ' with ' + car.km_3 + ' km';
+                                    console.log(text);
+                                })
+                            }
+                        }
+
+                        //cars.printInformation();
+                        //cars.printInformationArrow();
+                        cars.printInformationThat();
+                    </code>
+                </pre>
+            </div>
+
             <div class="row align-items-center pt-3">
                 <div class="col-3">
                     <button type="button" id="example3" class="btn btn-primary">Example 1</button>
@@ -66,6 +168,51 @@
             </div>
         </div>
 
+        <div class="pt-5">
+            <h2><span class="badge badge-secondary">4 </span> 'this' when method is assigned to a variable</h2>
+
+            <div>
+                <pre>
+                    <code>
+                        var car = {
+                            model_4: 'BMW',
+                            owner_4: 'Adrian',
+                            km_4: '100000',
+                        
+                            printInformation:  function () {
+                                var text = this.owner1 + ' has a ' + this.model1 + ' with ' + this.km1 + ' km';
+                                console.log(text);
+                            },
+                        
+                            printInformationArrow: () => {
+                                var text = this.owner1 + ' has a ' + this.model1 + ' with ' + this.km1 + ' km';
+                                console.log('Arrow: ' + text);
+                            }
+                        }
+                        
+                        var myFunction = car.printInformation;
+                        var myArrowFunction = car.printInformationArrow;
+                        var myBindFunction = car.printInformation.bind(car); 
+
+                        // myFunction();
+                        // myArrowFunction();
+                        myBindFunction();
+                    </code>
+                </pre>
+            </div>
+
+            <div class="row align-items-center pt-3">
+                <div class="col-3">
+                    <button type="button" id="example4" class="btn btn-primary">Example 1</button>
+                </div>
+                <div>
+                    <h4 id="example4_text"></h4>
+                </div>
+            </div>
+        </div>
+
+        
+
 
 
     </div>
@@ -73,6 +220,7 @@
     <script src="js/global.js"></script>
     <script src="js/callback.js"></script>
     <script src="js/closure.js"></script>
+    <script src="js/variable.js"></script>
 </body>
 
 </html>

@@ -14,8 +14,8 @@ var car = {
     },
 
     printInformationArrow: () => {
-        var text = this.owner1 + ' has a ' + this.model1 + ' with ' + this.km1;
-        console.log(this.owner1 + ' has a ' + this.model1 + ' with ' + this.km1);
+        var text = this.owner1 + ' has a ' + this.model1 + ' with ' + this.km1 + ' km';
+        console.log(text);
         text2.innerHTML += text;
     }
 }
