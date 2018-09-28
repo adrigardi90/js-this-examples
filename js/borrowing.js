@@ -23,7 +23,6 @@ var car_2 = {
 }
 
 // printInformation method has the context of car_2
-
 // car.printInformation = car_2.printInformation;
 // car.printInformation(); // Adrian has a BMW with 100000 km
 
