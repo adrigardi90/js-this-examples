@@ -58,7 +58,7 @@
             
             <div class="row align-items-center pt-3">
                 <div class="col-3">
-                    <button type="button" id="example1" class="btn btn-primary">Example 1</button>
+                    <button type="button" id="example1" class="btn btn-primary">Output 1</button>
                 </div>
                 <div>
                     <h4 id="example1_text"></h4>
@@ -66,7 +66,7 @@
             </div>
             <div class="row align-items-center pt-3">
                 <div class="col-3">
-                    <button type="button" id="example12" class="btn btn-primary">Example 2</button>
+                    <button type="button" id="example12" class="btn btn-primary">Output 2</button>
                 </div>
                 <div>
                     <h4 id="example12_text"></h4>
@@ -104,7 +104,7 @@
 
             <div class="row align-items-center pt-3">
                 <div class="col-3">
-                    <button type="button" id="example2" class="btn btn-primary">Example 1</button>
+                    <button type="button" id="example2" class="btn btn-primary">Output</button>
                 </div>
                 <div>
                     <h4 id="example2_text"></h4>
@@ -113,7 +113,7 @@
         </div>
 
         <div class="pt-5">
-            <h2><span class="badge badge-secondary">3 </span> 'this' in clossure</h2>
+            <h2><span class="badge badge-secondary">3 </span> 'this' inside clossure</h2>
 
             <div>
                 <pre>
@@ -160,7 +160,7 @@
 
             <div class="row align-items-center pt-3">
                 <div class="col-3">
-                    <button type="button" id="example3" class="btn btn-primary">Example 1</button>
+                    <button type="button" id="example3" class="btn btn-primary">Output</button>
                 </div>
                 <div>
                     <h4 id="example3_text"></h4>
@@ -203,10 +203,51 @@
 
             <div class="row align-items-center pt-3">
                 <div class="col-3">
-                    <button type="button" id="example4" class="btn btn-primary">Example 1</button>
+                    <button type="button" id="example4" class="btn btn-primary">Output</button>
                 </div>
                 <div>
                     <h4 id="example4_text"></h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-5">
+            <h2><span class="badge badge-secondary">4 </span> 'this' when borrowing methods</h2>
+
+            <div>
+                <pre>
+                    <code>
+                        var car = {
+                            model_5: 'BMW',
+                            owner_5: 'Adrian',
+                            km_5: '100000',
+                            printInformation:  null,
+                        }
+                        
+                        var car_2 = {
+                            model_5: 'MERCEDES',
+                            owner_5: 'Juan',
+                            km_5: '10',
+                            printInformation:  function () {
+                                var text = this.owner_5 + ' has a ' + this.model_5 + ' with ' + this.km_5 + ' km';
+                                console.log(text);
+                            },
+                        }
+                        
+                        // car.printInformation = car_2.printInformation;
+                        // car.printInformation(); 
+                        car.printInformation = car_2.printInformation.bind(car_2);
+                        car.printInformation();
+                    </code>
+                </pre>
+            </div>
+
+            <div class="row align-items-center pt-3">
+                <div class="col-3">
+                    <button type="button" id="example5" class="btn btn-primary">Output</button>
+                </div>
+                <div>
+                    <h4 id="example5_text"></h4>
                 </div>
             </div>
         </div>
@@ -221,6 +262,7 @@
     <script src="js/callback.js"></script>
     <script src="js/closure.js"></script>
     <script src="js/variable.js"></script>
+    <script src="js/borrowing.js"></script>
 </body>
 
 </html>
